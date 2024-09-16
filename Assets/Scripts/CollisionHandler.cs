@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-   
+    
     void OnCollisionEnter(Collision other) 
     {
          switch (other.gameObject.tag)
@@ -17,6 +17,7 @@ public class CollisionHandler : MonoBehaviour
                 break;
             case "Finish":
                 Debug.Log("Congratz you finished!");
+                LoadNextLevel();
                 break;
             case "Fuel":
                 Debug.Log("You've picked up fuel");
@@ -34,4 +35,15 @@ public class CollisionHandler : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
+    void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex +1;
+
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings){
+            nextSceneIndex = 0;
+        }
+        
+        SceneManager.LoadScene(nextSceneIndex);
+    }
 }
