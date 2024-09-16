@@ -4,9 +4,11 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float lvlLoadDelay = 2f;
     
     void OnCollisionEnter(Collision other) 
     {
@@ -17,14 +19,11 @@ public class CollisionHandler : MonoBehaviour
                 break;
             case "Finish":
                 Debug.Log("Congratz you finished!");
-                LoadNextLevel();
-                break;
-            case "Fuel":
-                Debug.Log("You've picked up fuel");
+                StartLoadingSequence();
                 break;
             default:
                 Debug.Log("Sorry, you're done!");
-                ReloadLevel();
+                StartCrashSequence();
                 break;
          }
     }
@@ -45,5 +44,23 @@ public class CollisionHandler : MonoBehaviour
         }
         
         SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    void StartCrashSequence()
+    {
+        //TODO
+        // add SFX upon crash
+        // add VFX upon crash
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel",lvlLoadDelay);
+    }
+
+    void StartLoadingSequence()
+    {
+        //TODO
+        // add SFX upon crash
+        // add VFX upon crash
+        GetComponent<Movement>().enabled = false;
+        Invoke("LoadNextLevel",lvlLoadDelay);
     }
 }
