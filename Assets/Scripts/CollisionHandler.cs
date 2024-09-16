@@ -9,6 +9,14 @@ using Unity.VisualScripting;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float lvlLoadDelay = 2f;
+    [SerializeField] AudioClip obstacleHitSound;
+    [SerializeField] AudioClip successSound;
+    AudioSource audioSource;
+
+    void Start() 
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     
     void OnCollisionEnter(Collision other) 
     {
@@ -48,18 +56,14 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
-        //TODO
-        // add SFX upon crash
-        // add VFX upon crash
+        audioSource.PlayOneShot(obstacleHitSound);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel",lvlLoadDelay);
     }
 
     void StartLoadingSequence()
     {
-        //TODO
-        // add SFX upon crash
-        // add VFX upon crash
+        audioSource.PlayOneShot(successSound);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel",lvlLoadDelay);
     }
