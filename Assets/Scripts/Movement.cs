@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {   
-    [SerializeField] float mainThrust = 1000f;
+    [SerializeField] float mainThrustSpeed = 1000f;
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] AudioClip mainEngine;
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem LeftThrusterParticles;
+    [SerializeField] ParticleSystem RightThrusterParticles;
     
     Rigidbody rb;
     AudioSource audioSource;
@@ -29,16 +32,21 @@ public class Movement : MonoBehaviour
     {
        if (Input.GetKey(KeyCode.Space))
        {
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+            rb.AddRelativeForce(Vector3.up * mainThrustSpeed * Time.deltaTime);
             
                 if(!audioSource.isPlaying)
                 {
                     audioSource.PlayOneShot(mainEngine);
+                }
+                if(!mainEngineParticles.isPlaying)
+                {
+                    mainEngineParticles.Play();
                 }    
        }
        else
         {   
             audioSource.Stop();
+            mainEngineParticles.Stop();
         } 
        
     }
@@ -48,11 +56,27 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationSpeed);
+
+            if(!RightThrusterParticles.isPlaying)
+                {
+                    RightThrusterParticles.Play();
+                } 
+
         }
         else if (Input.GetKey(KeyCode.D))
        {
             ApplyRotation(-rotationSpeed);
+
+            if(!LeftThrusterParticles.isPlaying)
+                {
+                    LeftThrusterParticles.Play();
+                }
        }
+       else
+        {
+            RightThrusterParticles.Stop();
+            LeftThrusterParticles.Stop();
+        }
     }
 
     void ApplyRotation(float rotationThisFrame)
