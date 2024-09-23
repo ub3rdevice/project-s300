@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 644079906}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15239495, y: 0.0045049116, z: -0.0025168622, w: 0.9883062}
-  m_LocalPosition: {x: -43.856457, y: 3.3582947, z: -9.97118}
+  m_LocalPosition: {x: -43.848213, y: 3.358265, z: -9.971259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -228,7 +228,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.24
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -385,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15239495, y: 0.0045049116, z: -0.0025168622, w: 0.9883062}
-  m_LocalPosition: {x: -43.856457, y: 3.3582947, z: -9.97118}
+  m_LocalPosition: {x: -43.848213, y: 3.358265, z: -9.971259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -467,6 +467,37 @@ Transform:
   - {fileID: 2062848675}
   - {fileID: 1311369411}
   - {fileID: 1552712574}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1032548167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032548168}
+  m_Layer: 0
+  m_Name: lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1032548168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032548167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.487617, y: 10.463421, z: 48.771088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1196983798 stripped
@@ -1650,3 +1681,4 @@ SceneRoots:
   - {fileID: 8113853303670656233}
   - {fileID: 3730936268032294133}
   - {fileID: 965723841}
+  - {fileID: 1032548168}
