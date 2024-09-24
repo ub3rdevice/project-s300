@@ -23,6 +23,8 @@ public class Oscillator : MonoBehaviour
 
     void OscillatorMover()
     {
+        if (period <= Mathf.Epsilon) { return; } //protection from NaN for period value, Mathf.Epsilon is the smallest float number unity can handle, do not compare floats (obvs)
+
         float cycles = Time.time / period; // this value grows over time
 
         const float tau = Mathf.PI * 2; // constant value of 6.283 (Pi * 2)
